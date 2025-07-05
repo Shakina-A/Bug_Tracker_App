@@ -16,16 +16,16 @@ function Login() {
     e.preventDefault();
     try {
       const res = await api.post("/auth/login", form);
-      login(res.data.user, res.data.token); // Save user & token
+      login(res.data.user, res.data.token);
       alert("Login successful");
-      navigate("/"); // Redirect to dashboard
+      navigate("/");
     } catch (err) {
       alert(err.response?.data?.error || "Login failed");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit}>
       <h2>Login</h2>
       <input
         name="email"

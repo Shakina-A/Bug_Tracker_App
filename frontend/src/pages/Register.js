@@ -1,18 +1,20 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 
-function Register(){
-    const navigate=useNavigate();
-    const[form,setForm]=useState({
-        name:"",
-        email:"",
-        password:"",
-        role:"Tester",
-    });
-    const handleChange = (e) => {
+function Register() {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "Tester",
+  });
+
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -23,8 +25,9 @@ function Register(){
       alert(err.response?.data?.error || "Registration failed.");
     }
   };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit}>
       <h2>Register</h2>
       <input
         name="name"
@@ -47,7 +50,7 @@ function Register(){
         onChange={handleChange}
         required
       />
-      <select name="role" onChange={handleChange}>
+      <select name="role" onChange={handleChange} value={form.role}>
         <option value="tester">Tester</option>
         <option value="developer">Developer</option>
         <option value="admin">Admin</option>

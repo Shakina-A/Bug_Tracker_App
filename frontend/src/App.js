@@ -15,6 +15,7 @@ function App() {
   return (
     <div>
       <Navbar/>
+      <main className='main-content'>
       <Routes>
         <Route path="/" element={<Dashboard/>}/>
         <Route path="/login" element={<Login/>}/>
@@ -34,6 +35,7 @@ function App() {
         </PrivateRoute>}/>
 
       </Routes>
+      </main>
       
     </div>
   );
